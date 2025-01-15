@@ -5,7 +5,7 @@ interface Props {
 const EffectFilter: React.FC<Props> = ({ setEffectValue }) => {
     return (
         <>
-            <p>Level Filter</p>
+            <p>Effect Filter</p>
             <input type="text" onChange={(e) => setEffectValue(e.target.value)} />
         </>
     )
