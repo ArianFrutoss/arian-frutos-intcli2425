@@ -1,5 +1,5 @@
 import { potions } from "../data/data";
-import { filterByLevelRequirement, getPotionsByRarity } from "../helpers/potionHelpers";
+import { filterByLevelRequirement, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers";
 
 describe('When the level is higher than the potion requirement level', () => {
     it('Should return potions with level_requirement lower than level', () => {
@@ -20,5 +20,15 @@ describe('When the rarity it is the same as the potion rarity', () => {
         const filteredPotions = getPotionsByRarity(potionsArray, rarity);
 
         expect(filteredPotions).toStrictEqual([potionsArray[7], potionsArray[9]]);
+    });
+});
+
+describe('When select a potion', () => {
+    it('Should return potion ingredient list', () => {
+        const potion = potions[0];
+
+        const potionIngredients = listIngredients(potion);
+
+        expect(potionIngredients).toStrictEqual(['Phoenix Feather', 'Molten Ember', 'Flameflower Extract']);
     });
 });
