@@ -9,6 +9,7 @@ import EffectFilter from './components/EffectFilter';
 import CraftTimeButton from './components/CraftTimeButton';
 
 function App() {
+  const [potionsArray] = useState<Potion[]>(potions);
   const [activePotions, setActivePotions] = useState<Potion[]>(potions);
   const [sliderValue, setSliderValue] = useState<string>("50");
   const [rarityValue, setRarityValue] = useState<string>("epic");
@@ -16,15 +17,15 @@ function App() {
   const [craftTimeValue, setCraftTimeValue] = useState<number>(0);
 
   useEffect(() => {
-    setActivePotions(filterByLevelRequirement(potions, +sliderValue));
+    setActivePotions(filterByLevelRequirement(potionsArray, +sliderValue));
   }, [sliderValue]);
 
   useEffect(() => {
-    setActivePotions(getPotionsByRarity(potions, rarityValue));
+    setActivePotions(getPotionsByRarity(potionsArray, rarityValue));
   }, [rarityValue]);
 
   useEffect(() => {
-    setActivePotions(findPotionByEffect(potions, effectValue));
+    setActivePotions(findPotionByEffect(potionsArray, effectValue));
   }, [effectValue]);
 
   const calculateCraftTime = () => {
