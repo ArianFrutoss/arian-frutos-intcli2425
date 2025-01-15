@@ -1,5 +1,5 @@
 import { potions } from "../data/data";
-import { filterByLevelRequirement, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers";
+import { filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers";
 
 describe('When the level is higher than the potion requirement level', () => {
     it('Should return potions with level_requirement lower than level', () => {
@@ -30,5 +30,16 @@ describe('When select a potion', () => {
         const potionIngredients = listIngredients(potion);
 
         expect(potionIngredients).toStrictEqual(['Phoenix Feather', 'Molten Ember', 'Flameflower Extract']);
+    });
+});
+
+describe('When the effect it is the same as the potion secondary effect', () => {
+    it('Should return potions with the secondary effect', () => {
+        const effect = "manaRegeneration";
+        const potionsArray = potions;
+
+        const filteredPotions = findPotionByEffect(potionsArray, effect);
+        
+        expect(filteredPotions).toStrictEqual([potionsArray[1], potionsArray[4]]);
     });
 });

@@ -13,3 +13,7 @@ export const getPotionsByRarity = (potions: Potion[], rarity: string) => {
 export const listIngredients = (potion: Potion) => {
     return potion.ingredients.map((ingredient: Ingredient) => ingredient.name);
 }
+
+export const findPotionByEffect = (potions: Potion[], effect: string) => {
+    return potions.filter((potion: Potion) => potion.effects.secondary.find((secondaryEffect) => secondaryEffect.attribute === effect));
+}
