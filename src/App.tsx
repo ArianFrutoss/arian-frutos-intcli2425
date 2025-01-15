@@ -17,15 +17,15 @@ function App() {
 
   useEffect(() => {
     setActivePotions(filterByLevelRequirement(potions, +sliderValue));
-  },[sliderValue]);
+  }, [sliderValue]);
 
   useEffect(() => {
     setActivePotions(getPotionsByRarity(potions, rarityValue));
-  },[rarityValue]);
+  }, [rarityValue]);
 
   useEffect(() => {
     setActivePotions(findPotionByEffect(potions, effectValue));
-  },[effectValue]);
+  }, [effectValue]);
 
   const calculateCraftTime = () => {
     setCraftTimeValue(calculateCraftingTime(activePotions));
@@ -34,12 +34,13 @@ function App() {
   return (
     <>
       <div className="w-screen h-screen">
-        <PotionList potionsArray={activePotions}/>
-        <LevelFilter setSliderCont={setSliderValue}/>
-        <RarityFilter setRarityValue={setRarityValue}/>
-        <EffectFilter setEffectValue={setEffectValue}/>
-        <CraftTimeButton calculateCraftTime={calculateCraftTime}/>
-        <p>{craftTimeValue}</p>
+        <PotionList potionsArray={activePotions} />
+        <div className="flex justify-around h-[10%]">
+          <LevelFilter setSliderCont={setSliderValue} />
+          <RarityFilter setRarityValue={setRarityValue} />
+          <EffectFilter setEffectValue={setEffectValue} />
+          <CraftTimeButton craftTimeValue={craftTimeValue} calculateCraftTime={calculateCraftTime} />
+        </div>
       </div>
     </>
   )
