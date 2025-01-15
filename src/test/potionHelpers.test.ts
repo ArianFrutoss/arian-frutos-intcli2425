@@ -1,5 +1,5 @@
 import { potions } from "../data/data";
-import { filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers";
+import { calculateCraftingTime, filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients } from "../helpers/potionHelpers";
 
 describe('When the level is higher than the potion requirement level', () => {
     it('Should return potions with level_requirement lower than level', () => {
@@ -41,5 +41,15 @@ describe('When the effect it is the same as the potion secondary effect', () => 
         const filteredPotions = findPotionByEffect(potionsArray, effect);
         
         expect(filteredPotions).toStrictEqual([potionsArray[1], potionsArray[4]]);
+    });
+});
+
+describe('When select a potions', () => {
+    it('Should return the total crafting time in minutes', () => {
+        const potionsArray = [potions[2], potions[4], potions[9]];
+
+        const filteredPotions = calculateCraftingTime(potionsArray);
+        
+        expect(filteredPotions).toBe(398);
     });
 });
