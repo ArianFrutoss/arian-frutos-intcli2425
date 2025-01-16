@@ -11,22 +11,18 @@ import CraftTimeButton from './components/CraftTimeButton';
 function App() {
   const [potionsArray] = useState<Potion[]>(potions);
   const [activePotions, setActivePotions] = useState<Potion[]>(potions);
-  const [sliderValue, setSliderValue] = useState<string>("50");
-  const [rarityValue, setRarityValue] = useState<string>("epic");
+  const [sliderValue, setSliderValue] = useState<string>("0");
+  const [rarityValue, setRarityValue] = useState<string>("");
   const [effectValue, setEffectValue] = useState<string>("");
   const [craftTimeValue, setCraftTimeValue] = useState<number>(0);
 
   useEffect(() => {
-    setActivePotions(filterByLevelRequirement(potionsArray, +sliderValue));
-  }, [sliderValue]);
-
-  useEffect(() => {
-    setActivePotions(getPotionsByRarity(potionsArray, rarityValue));
-  }, [rarityValue]);
-
-  useEffect(() => {
-    setActivePotions(findPotionByEffect(potionsArray, effectValue));
-  }, [effectValue]);
+    let newActivePotions = [...potionsArray];
+    newActivePotions = filterByLevelRequirement(newActivePotions, +sliderValue);
+    rarityValue != "" ? newActivePotions = getPotionsByRarity(newActivePotions, rarityValue) : null;
+    effectValue != "" ? newActivePotions = findPotionByEffect(newActivePotions, effectValue) : null;
+    setActivePotions(newActivePotions);
+  }, [sliderValue, rarityValue, effectValue]);
 
   const calculateCraftTime = () => {
     setCraftTimeValue(calculateCraftingTime(activePotions));
@@ -37,7 +33,7 @@ function App() {
       <div className="w-screen h-screen">
         <PotionList potionsArray={activePotions} />
         <div className="flex justify-around h-[10%]">
-          <LevelFilter setSliderCont={setSliderValue} />
+          <LevelFilter sliderValue ={+sliderValue} setSliderCont={setSliderValue} />
           <RarityFilter setRarityValue={setRarityValue} />
           <EffectFilter setEffectValue={setEffectValue} />
           <CraftTimeButton craftTimeValue={craftTimeValue} calculateCraftTime={calculateCraftTime} />

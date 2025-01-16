@@ -9,6 +9,7 @@ const RarityFilter: React.FC<Props> = ({ setRarityValue }) => {
             <select
                 onChange={(e) => setRarityValue(e.target.value)}
                 className="bg-gray-200 text-black border border-gray-800 rounded-md p-[10%] appearance-none">
+                    <option value="">All</option>
                     <option value="epic">Epic</option>
                     <option value="legendary">Legendary</option>
                     <option value="mythic">Mythic</option>
