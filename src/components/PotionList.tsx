@@ -14,7 +14,7 @@ const PotionList: React.FC<Props> = ({ openModal, potionsArray }) => {
           <div key={i} className="w-[18%] bg-gray-950 bg-opacity-50 m-[1%] text-center p-[1%]">
             <p className="text-yellow-600 text-xl p-[2%]">{potion.name}</p>
             <div className="flex justify-center place-content-center p-[1%]">
-              <img className="w-[50%]" src={`./../public/${potion.image}`} alt={potion.id} />
+              <img className="w-[50%]" src={`https://arian-frutos-intcli2425.vercel.app/public/${potion.image}`} alt={potion.id} />
             </div>
             <p>{`Rarity: ${potion.rarity}`}</p>
             <p>{`Boss: ${potion.meta.availability.drop_rate.boss}`}</p>
