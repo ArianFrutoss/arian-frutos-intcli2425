@@ -23,9 +23,9 @@ const PotionModal: React.FC<Props> = ({ closeModal, potion }) => {
                         <h3 className="text-xl pt-[2%] pb-[1%] text-yellow-400">Secondary Effects</h3>
                         <div className="flex justify-around">
                             <>
-                                {potion.effects.secondary.map((secondary) => {
+                                {potion.effects.secondary.map((secondary, i) => {
                                     return (
-                                        <div>
+                                        <div key={i}>
                                             <p>{secondary.attribute}</p>
                                             <p>{`Duration: ${secondary.duration.amount} ${secondary.duration.unit}`}</p>
                                             <p>{`Value: ${secondary.value}`}</p>
@@ -37,9 +37,9 @@ const PotionModal: React.FC<Props> = ({ closeModal, potion }) => {
                         <h3 className="text-xl pt-[2%] pb-[1%] text-yellow-400">Ingredients</h3>
                         <div className="flex justify-around">
                             <>
-                                {potion.ingredients.map((ingredient) => { 
+                                {potion.ingredients.map((ingredient, i) => { 
                                     return (
-                                        <div>
+                                        <div key={i}>
                                             <p>{ingredient.name}</p>
                                             <p>{`Quantity: ${ingredient.quantity}`}</p>
                                             <p>{`Location: ${ingredient.origin.location}`}</p>
@@ -53,8 +53,8 @@ const PotionModal: React.FC<Props> = ({ closeModal, potion }) => {
                         <div>
                             <span>Class Restrictions: </span>
                             <>
-                                {potion.usage.restrictions.classRestrictions.map((classRestriction) => {
-                                    return (<span>{`${classRestriction}. `}</span>)
+                                {potion.usage.restrictions.classRestrictions.map((classRestriction, i) => {
+                                    return (<span key={i}>{`${classRestriction}. `}</span>)
                                 })}
                             </>
                             <p>{`Level Restriction: ${potion.usage.restrictions.levelRequirement}`}</p>
@@ -62,16 +62,16 @@ const PotionModal: React.FC<Props> = ({ closeModal, potion }) => {
                         <h3 className="text-xl pt-[2%] pb-[1%] text-yellow-400">Warnings</h3>
                         <div>
                             <>
-                                {potion.usage.restrictions.warnings.map((warning) => {
-                                    return (<p>{warning}</p>)
+                                {potion.usage.restrictions.warnings.map((warning, i) => {
+                                    return (<p key={i}>{warning}</p>)
                                 })}
                             </>
                         </div>
                         <h3 className="text-xl pt-[2%] pb-[1%] text-yellow-400">Instructions</h3>
                         <div>
                             <>
-                                {potion.usage.instructions.map((instruction) => {
-                                    return (<p>{instruction}</p>)
+                                {potion.usage.instructions.map((instruction, i) => {
+                                    return (<p key={i}>{instruction}</p>)
                                 })}
                             </>
                         </div>
