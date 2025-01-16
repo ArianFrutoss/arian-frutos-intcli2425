@@ -1,6 +1,5 @@
 import React from "react";
 import { Potion } from "../types/Potion";
-import { Effects } from "../types/Effects";
 
 interface Props {
     closeModal: () => void;

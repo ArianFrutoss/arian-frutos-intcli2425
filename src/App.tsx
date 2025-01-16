@@ -48,7 +48,7 @@ function App() {
       }
       <div className="w-screen h-screen">
         <PotionList openModal={openModal} potionsArray={activePotions} />
-        <div className="flex justify-around h-[10%] absolute bottom-[5%] w-full">
+        <div className="flex justify-around h-[10%] absolute bottom-[0%] w-full">
           <LevelFilter sliderValue={+sliderValue} setSliderCont={setSliderValue} />
           <RarityFilter setRarityValue={setRarityValue} />
           <EffectFilter setEffectValue={setEffectValue} />
