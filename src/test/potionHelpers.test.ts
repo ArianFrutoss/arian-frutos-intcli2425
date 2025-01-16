@@ -3,12 +3,12 @@ import { calculateCraftingTime, filterByLevelRequirement, findPotionByEffect, ge
 
 describe('When the level is higher than the potion requirement level', () => {
     it('Should return potions with level_requirement lower than level', () => {
-        const level = 16;
+        const level = 24;
         const potionsArray = potions;
 
         const filteredPotions = filterByLevelRequirement(potionsArray, level);
 
-        expect(filteredPotions).toStrictEqual([potionsArray[0], potionsArray[2], potionsArray[5]]);
+        expect(filteredPotions).toStrictEqual([potionsArray[4], potionsArray[7], potionsArray[8], potionsArray[9]]);
     });
 });
 
