@@ -32,7 +32,7 @@ function App() {
     <>
       <div className="w-screen h-screen">
         <PotionList potionsArray={activePotions} />
-        <div className="flex justify-around h-[10%]">
+        <div className="flex justify-around h-[10%] absolute bottom-[5%] w-full">
           <LevelFilter sliderValue ={+sliderValue} setSliderCont={setSliderValue} />
           <RarityFilter setRarityValue={setRarityValue} />
           <EffectFilter setEffectValue={setEffectValue} />
