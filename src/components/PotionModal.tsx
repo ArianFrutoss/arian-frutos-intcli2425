@@ -9,7 +9,7 @@ interface Props {
 const PotionModal: React.FC<Props> = ({ closeModal, potion }) => {
     return (
         <>
-            <div className="absolute w-screen h-screen bg-black bg-opacity-80 z-10 flex justify-center">
+            <div className="absolute w-screen h-screen bg-black bg-opacity-80 z-10 flex justify-center overflow-hidden">
                 <div className="bg-stone-950 w-[50%]">
                     <button className="float-end" onClick={closeModal}>X</button>
                     <div className="text-center p-[3%]">
